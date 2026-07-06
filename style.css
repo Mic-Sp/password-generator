@@ -1,0 +1,255 @@
+/* --- Global Variables --- */
+:root {
+    /* Cyber-security Color Palette */
+    --color-background-primary: #050505;
+    --color-surface-primary: #0f0f11;
+    --color-surface-secondary: #1a1a20;
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #64748b;
+    
+    /* Neon Accents */
+    --color-accent-cyan: #00f0ff;
+    --color-accent-cyan-glow: rgba(0, 240, 255, 0.4);
+    --color-accent-green: #00ff66;
+    
+    /* Borders & Depth */
+    --color-border-subtle: #27272a;
+    --color-border-highlight: #3f3f46;
+    
+    --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-family-mono: "Fira Code", "Courier New", Courier, monospace;
+    
+    --border-radius-medium: 6px;
+    --border-radius-large: 10px;
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+}
+
+/* --- Base Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-sans);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-medium);
+    /* Subtle radial gradient to draw focus to the center */
+    background-image: radial-gradient(circle at center, #111115 0%, #050505 100%);
+}
+
+/* --- Main Application Container --- */
+.application-container {
+    background-color: var(--color-surface-primary);
+    width: 100%;
+    max-width: 450px;
+    padding: var(--spacing-large);
+    border-radius: var(--border-radius-large);
+    border: 1px solid var(--color-border-subtle);
+    /* Layered shadows for depth and a subtle cyber glow */
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        0 0 20px rgba(0, 240, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
+}
+
+.primary-heading {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* --- Password Display Section --- */
+.password-display-section {
+    display: flex;
+    background-color: var(--color-background-primary);
+    border: 1px solid var(--color-border-highlight);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Active state for the display area */
+.password-display-section:focus-within {
+    border-color: var(--color-accent-cyan);
+    box-shadow: 0 0 10px var(--color-accent-cyan-glow);
+}
+
+.password-output-field {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-accent-green); /* Matrix-style green for the output */
+    font-family: var(--font-family-mono);
+    font-size: 1.35rem;
+    padding: var(--spacing-medium);
+    outline: none;
+    width: 100%;
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+}
+
+.password-output-field::placeholder {
+    color: var(--color-text-secondary);
+    text-shadow: none;
+    opacity: 0.3;
+}
+
+.secondary-action-button {
+    background-color: transparent;
+    color: var(--color-accent-cyan);
+    border: none;
+    border-left: 1px solid var(--color-border-highlight);
+    padding: 0 var(--spacing-medium);
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.secondary-action-button:hover, 
+.secondary-action-button:focus {
+    background-color: var(--color-surface-secondary);
+    color: #ffffff;
+    text-shadow: 0 0 5px var(--color-accent-cyan);
+    outline: none;
+}
+
+.secondary-action-button:active {
+    background-color: var(--color-accent-cyan);
+    color: var(--color-background-primary);
+}
+
+/* --- Configuration Section --- */
+.password-configuration-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
+}
+
+.configuration-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
+
+/* --- Slider Styling --- */
+.length-label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.configuration-label {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+}
+
+.length-display-value {
+    color: var(--color-accent-cyan);
+    font-weight: bold;
+    font-size: 1.25rem;
+    font-family: var(--font-family-mono);
+    text-shadow: 0 0 5px var(--color-accent-cyan-glow);
+}
+
+.length-slider-input {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--color-accent-cyan);
+    height: 4px;
+    background: var(--color-surface-secondary);
+    border-radius: 2px;
+    outline: none;
+}
+
+.length-slider-input:focus {
+    box-shadow: 0 0 0 2px var(--color-background-primary), 0 0 0 4px var(--color-accent-cyan);
+    border-radius: 4px;
+}
+
+/* --- Checkbox Styling --- */
+.checkbox-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+    transition: transform 0.1s ease;
+}
+
+.checkbox-input-wrapper:hover {
+    transform: translateX(4px);
+}
+
+.character-toggle-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--color-accent-cyan);
+    background-color: var(--color-surface-secondary);
+    border: 1px solid var(--color-border-subtle);
+}
+
+.character-toggle-checkbox:focus {
+    outline: 2px solid var(--color-accent-cyan);
+    outline-offset: 2px;
+}
+
+.checkbox-label {
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    transition: color 0.2s ease;
+}
+
+.character-toggle-checkbox:checked + .checkbox-label {
+    color: #ffffff;
+}
+
+/* --- Primary Button --- */
+.primary-action-button {
+    background-color: transparent;
+    color: var(--color-accent-cyan);
+    border: 1px solid var(--color-accent-cyan);
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-medium);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.primary-action-button:hover,
+.primary-action-button:focus {
+    background-color: var(--color-accent-cyan);
+    color: var(--color-background-primary);
+    box-shadow: 0 0 20px var(--color-accent-cyan-glow);
+    outline: none;
+}
+
+.primary-action-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 5px var(--color-accent-cyan-glow);
+}
