@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="application-container">
+        <header class="application-header">
+            <h1 class="primary-heading">Password Generator</h1>
+        </header>
+
+        <section class="password-display-section">
+            <input 
+                type="text" 
+                id="generated-password-output" 
+                class="password-output-field" 
+                placeholder="P4$5w0rD!" 
+                readonly 
+                aria-label="Generated Password"
+            >
+            <button id="copy-to-clipboard-button" class="secondary-action-button" aria-label="Copy to clipboard">
+                Copy
+            </button>
+        </section>
+
+        <section class="password-configuration-section">
+            
+            <div class="configuration-control-group">
+                <div class="length-label-wrapper">
+                    <label for="password-length-slider" class="configuration-label">Character Length</label>
+                    <span id="password-length-display" class="length-display-value">16</span>
+                </div>
+                <input 
+                    type="range" 
+                    id="password-length-slider" 
+                    class="length-slider-input" 
+                    min="8" 
+                    max="128" 
+                    value="16"
+                >
+            </div>
+
+            <div class="configuration-control-group">
+                <div class="checkbox-input-wrapper">
+                    <input type="checkbox" id="include-uppercase-letters" class="character-toggle-checkbox" checked>
+                    <label for="include-uppercase-letters" class="checkbox-label">Include Uppercase Letters (A-Z)</label>
+                </div>
+                
+                <div class="checkbox-input-wrapper">
+                    <input type="checkbox" id="include-lowercase-letters" class="character-toggle-checkbox" checked>
+                    <label for="include-lowercase-letters" class="checkbox-label">Include Lowercase Letters (a-z)</label>
+                </div>
+                
+                <div class="checkbox-input-wrapper">
+                    <input type="checkbox" id="include-numbers" class="character-toggle-checkbox" checked>
+                    <label for="include-numbers" class="checkbox-label">Include Numbers (0-9)</label>
+                </div>
+                
+                <div class="checkbox-input-wrapper">
+                    <input type="checkbox" id="include-symbols" class="character-toggle-checkbox" checked>
+                    <label for="include-symbols" class="checkbox-label">Include Symbols (!@#$)</label>
+                </div>
+            </div>
+
+            <button id="generate-password-button" class="primary-action-button">
+                Generate Password
+            </button>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

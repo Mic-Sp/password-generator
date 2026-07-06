@@ -1,0 +1,178 @@
+/* --- Global Variables --- */
+:root {
+    --color-background-primary: #0f172a;
+    --color-surface-primary: #1e293b;
+    --color-surface-secondary: #334155;
+    --color-text-primary: #f8fafc;
+    --color-text-secondary: #94a3b8;
+    --color-accent-primary: #3b82f6;
+    --color-accent-hover: #2563eb;
+    --color-border-primary: #475569;
+    
+    --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-family-mono: "Fira Code", "Courier New", Courier, monospace;
+    
+    --border-radius-medium: 8px;
+    --border-radius-large: 12px;
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+}
+
+/* --- Base Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-sans);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-medium);
+}
+
+/* --- Main Application Container --- */
+.application-container {
+    background-color: var(--color-surface-primary);
+    width: 100%;
+    max-width: 450px;
+    padding: var(--spacing-large);
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
+}
+
+.primary-heading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Password Display Section --- */
+.password-display-section {
+    display: flex;
+    background-color: var(--color-background-primary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+}
+
+.password-output-field {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-accent-primary);
+    font-family: var(--font-family-mono);
+    font-size: 1.25rem;
+    padding: var(--spacing-medium);
+    outline: none;
+    width: 100%;
+}
+
+.password-output-field::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.5;
+}
+
+.secondary-action-button {
+    background-color: var(--color-surface-secondary);
+    color: var(--color-text-primary);
+    border: none;
+    padding: 0 var(--spacing-medium);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.secondary-action-button:hover {
+    background-color: var(--color-accent-primary);
+}
+
+/* --- Configuration Section --- */
+.password-configuration-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
+}
+
+.configuration-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+}
+
+/* --- Slider Styling --- */
+.length-label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.configuration-label {
+    font-weight: 500;
+}
+
+.length-display-value {
+    color: var(--color-accent-primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.length-slider-input {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--color-accent-primary);
+}
+
+/* --- Checkbox Styling --- */
+.checkbox-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-small);
+}
+
+.character-toggle-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--color-accent-primary);
+}
+
+.checkbox-label {
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.95rem;
+}
+
+/* --- Primary Button --- */
+.primary-action-button {
+    background-color: var(--color-accent-primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-medium);
+    padding: var(--spacing-medium);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.primary-action-button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.primary-action-button:active {
+    transform: scale(0.98);
+}
