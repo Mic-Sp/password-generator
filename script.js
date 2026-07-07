@@ -15,6 +15,7 @@ const copyToClipboardButton = document.getElementById('copy-to-clipboard-button'
 const UPPERCASE_CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const LOWERCASE_CHARACTERS = 'abcdefghijklmnopqrstuvwxyz';
 const NUMBER_CHARACTERS = '0123456789';
+const DEFAULT_SYMBOL_CHARACTERS = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
 
 // --- Core Logic ---
 
@@ -132,6 +133,18 @@ async function copyPasswordToClipboard() {
 // --- Event Binding ---
 generatePasswordButton.addEventListener('click', generateSecurePassword);
 copyToClipboardButton.addEventListener('click', copyPasswordToClipboard);
+
+/* * UX Polish: Prevent the allowed symbols input from remaining empty.
+ * Listens for the 'blur' event (when the input field loses focus). 
+ * If the field is completely empty or contains only whitespace, 
+ * it automatically restores the default symbol string to prevent 
+ * cryptographic generation errors or empty pool selection.
+ */
+allowedSymbolsInput.addEventListener('blur', (event) => {
+    if (event.target.value.trim() === '') {
+        event.target.value = DEFAULT_SYMBOL_CHARACTERS;
+    }
+});
 
 // Generate an initial password on page load
 generateSecurePassword();
