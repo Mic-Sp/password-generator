@@ -62,7 +62,15 @@
                 
                 <div class="checkbox-input-wrapper">
                     <input type="checkbox" id="include-symbols" class="character-toggle-checkbox" checked>
-                    <label for="include-symbols" class="checkbox-label">Include Symbols (!@#$)</label>
+                    <label for="include-symbols" class="checkbox-label">Include Symbols:</label>
+                    <input 
+                        type="text" 
+                        id="allowed-symbols-input" 
+                        class="symbol-configuration-input" 
+                        value="!@#$%^&*()_+~`|}{[]:;?><,./-=" 
+                        aria-label="Allowed Symbols"
+                        spellcheck="false"
+                    >
                 </div>
             </div>
 

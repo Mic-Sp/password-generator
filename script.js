@@ -6,6 +6,7 @@ const includeUppercaseCheckbox = document.getElementById('include-uppercase-lett
 const includeLowercaseCheckbox = document.getElementById('include-lowercase-letters');
 const includeNumbersCheckbox = document.getElementById('include-numbers');
 const includeSymbolsCheckbox = document.getElementById('include-symbols');
+const allowedSymbolsInput = document.getElementById('allowed-symbols-input');
 const generatePasswordButton = document.getElementById('generate-password-button');
 const passwordOutputField = document.getElementById('generated-password-output');
 const copyToClipboardButton = document.getElementById('copy-to-clipboard-button');
@@ -14,7 +15,6 @@ const copyToClipboardButton = document.getElementById('copy-to-clipboard-button'
 const UPPERCASE_CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const LOWERCASE_CHARACTERS = 'abcdefghijklmnopqrstuvwxyz';
 const NUMBER_CHARACTERS = '0123456789';
-const SYMBOL_CHARACTERS = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
 
 // --- Core Logic ---
 
@@ -83,9 +83,13 @@ function generateSecurePassword() {
     }
     
     if (includeSymbolsCheckbox.checked) {
-        masterCharacterPool += SYMBOL_CHARACTERS;
-        guaranteedCharacters.push(getSecureRandomCharacter(SYMBOL_CHARACTERS));
-    }
+            const activeSymbols = allowedSymbolsInput.value;
+            // Verify the input isn't blank before attempting to draw a random character
+            if (activeSymbols.length > 0) {
+                masterCharacterPool += activeSymbols;
+                guaranteedCharacters.push(getSecureRandomCharacter(activeSymbols));
+            }
+        }
 
     if (masterCharacterPool.length === 0) {
         passwordOutputField.value = '';
